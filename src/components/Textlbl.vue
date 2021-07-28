@@ -1,14 +1,14 @@
 <template>
   <div :class="aligndef">
-    <label>{{ label }}</label>
+    <label>{{ text }}</label>
   </div>
 </template>
 
 <script>
 export default {
-  name: "label",
+  name: "Textlbl",
   props: {
-    label: String,
+    text: String,
     classdef: String,
   },
   computed: {

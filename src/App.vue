@@ -1,25 +1,30 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" width="25%" />
-    <!-- 
-      <HelloWorld msg="Hello Vue in CodeSandbox!"/>
-    -->
-    <Label label="本文" classdef="left" />
+    <Textlbl text="件名" classdef="left" />
+    <Textindex items="textdata" />
+    <Textlbl text="本文" classdef="left" />
     <Textarea />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
 import Textarea from "./components/Textbox";
-import Label from "./components/Label";
+import Textlbl from "./components/Textlbl";
+import Textindex from "./components/Textindex";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
     Textarea,
-    Label,
+    Textlbl,
+    Textindex,
+  },
+  data() {
+    textdata: [
+      { id: 1, title: "あ" },
+      { id: 2, title: "い" },
+    ];
   },
 };
 </script>
