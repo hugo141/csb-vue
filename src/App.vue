@@ -1,30 +1,42 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" width="25%" />
-    <Textlbl text="件名" classdef="left" />
-    <Textindex items="textdata" />
-    <Textlbl text="本文" classdef="left" />
-    <Textarea />
+    <Textindex
+      v-bind:items="textdata"
+      :selected="selectedkey"
+      v-on:select-key="selectedkey = $event"
+    />
+    <p>{{ selectedkey }}</p>
+    <p>{{ selectedtxt }}</p>
+    <Textbox />
   </div>
 </template>
 
 <script>
-import Textarea from "./components/Textbox";
-import Textlbl from "./components/Textlbl";
-import Textindex from "./components/Textindex";
+import Textindex from "./components/Textindex.vue";
+import Textbox from "./components/Textbox.vue";
 
 export default {
   name: "App",
   components: {
-    Textarea,
-    Textlbl,
     Textindex,
+    Textbox,
   },
   data() {
-    textdata: [
-      { id: 1, title: "あ" },
-      { id: 2, title: "い" },
-    ];
+    return {
+      textdata: [
+        { id: 1, title: "あ", txt: "aaaaa" },
+        { id: 2, title: "い", txt: "iiiii" },
+      ],
+      selectedkey: 0,
+      selectedtxt: null,
+    };
+  },
+  watch: {
+    selectText: function (selectedkey) {
+      console.log(this.textdata[selectedkey].txt);
+      this.selectedtxt = this.textdata[selectedkey].txt;
+    },
   },
 };
 </script>
