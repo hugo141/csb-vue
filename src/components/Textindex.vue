@@ -11,7 +11,7 @@
         {{ item.title }}
       </option>
     </select>
-    <span>{{ selected }}</span>
+    <!-- <span>{{ selected }}</span> -->
   </div>
 </template>
 

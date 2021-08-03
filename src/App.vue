@@ -6,9 +6,9 @@
       :selected="selectedkey"
       v-on:select-key="selectedkey = $event"
     />
-    <p>{{ selectedkey }}</p>
-    <p>{{ selectedtxt }}</p>
-    <Textbox />
+    <!-- <p>{{ selectedkey }}</p>
+    <p>{{ selectedtxt }}</p> -->
+    <Textbox v-bind:txtval="selectedtxt" />
   </div>
 </template>
 
@@ -29,13 +29,12 @@ export default {
         { id: 2, title: "い", txt: "iiiii" },
       ],
       selectedkey: 0,
-      selectedtxt: null,
+      selectedtxt: "選択してください。",
     };
   },
   watch: {
-    selectText: function (selectedkey) {
-      console.log(this.textdata[selectedkey].txt);
-      this.selectedtxt = this.textdata[selectedkey].txt;
+    selectedkey: function (newSelectedkey) {
+      this.selectedtxt = this.textdata[newSelectedkey - 1].txt;
     },
   },
 };
